@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    registry = "cta101/hello-app"
+    registry = "ctael5co/hello-app"
     registryCredential = 'dockerhub-ctael5co'
     dockerImage = ''
   }
