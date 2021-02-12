@@ -14,7 +14,7 @@ pipeline {
     stage('init') {
       steps {
         script {
-          docker.image('alpine').inside("--entrypoint=''") {
+          docker.image('hashicorp/terraform').inside("--entrypoint=''") {
           ansiColor('xterm') {
             sh 'curl github.com/meta'
           }
