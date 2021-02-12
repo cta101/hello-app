@@ -16,7 +16,6 @@ pipeline {
         script {
           docker.image('alpine').inside("--entrypoint=''") {
           ansiColor('xterm') {
-            sh 'apk -U add curl'
             sh 'curl github.com/meta'
           }
         }
