@@ -11,26 +11,17 @@ pipeline {
         checkout scm
       }
     }
-    stage('Building image') {
-      steps{
+    stage('init') {
+      steps {
         script {
-          dockerImage = docker.build registry + ":$BUILD_NUMBER"
-        }
-      }
-    }
-    stage('Deploy Image') {
-      steps{
-        script {
-          docker.withRegistry( '', registryCredential ) {
-            dockerImage.push()
+          docker.image('alpine').inside("--entrypoint=''") {
+          ansiColor('xterm') {
+            sh 'apk -U add curl'
+            sh 'curl github.com/meta'
           }
         }
       }
     }
-    stage('Remove Unused docker image') {
-      steps{
-        sh "docker rmi $registry:$BUILD_NUMBER"
-      }
-    }
   }
+}
 }
