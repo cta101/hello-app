@@ -16,7 +16,9 @@ pipeline {
         script {
           docker.image('hashicorp/terraform').inside("--entrypoint=''") {
           ansiColor('xterm') {
-            sh 'curl github.com/meta'
+            sh 'ls -l'
+            sh 'env'
+            sh 'terraform plan'
           }
         }
       }
